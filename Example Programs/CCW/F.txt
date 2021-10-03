@@ -1,0 +1,11 @@
+// a bunch of useful functions
+
+
+
+function WaitForUser
+	input "", _
+
+
+
+function AskYesNo
+	input "1 = yes, 2 = no", _Choice, 1, 2

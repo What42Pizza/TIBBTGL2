@@ -1,0 +1,37 @@
+input "How many players?", _NumOfPlayers, 1, inf
+
+
+
+fillTable _Money            , 0    , _NumOfPlayers
+fillTable _Troops           , 3    , _NumOfPlayers
+fillTable _Income           , 10   , _NumOfPlayers
+fillTable _AttackMod        , 1    , _NumOfPlayers
+fillTable _VictoryMod       , 0.5  , _NumOfPlayers
+fillTable _PlayersAlive     , true , _NumOfPlayers
+fillTable _ResettingPassword, false, _NumOfPlayers
+
+Passwords = {}
+
+
+
+
+
+loop i, 1, _NumOfPlayers
+	clearScreen
+	
+	input "Enter player " .. i .. "'s password:", Password1
+	input "Confirm password:", Password2
+	
+	if Password1 != Password2 then
+		p "Passwords do not match, press enter to reset"
+		do F.WaitForUser
+		repeat
+	
+	Passwords[i] = Password1
+
+
+
+
+
+_CurrPlayer = 0
+goto NextTurn

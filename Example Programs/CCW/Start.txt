@@ -1,0 +1,7 @@
+p "Castle Card Wars"
+p "Press enter to start"
+do F.WaitForUser
+
+
+
+goto InitGame
