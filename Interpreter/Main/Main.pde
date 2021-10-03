@@ -8,7 +8,7 @@
 
 String[] TestCode = {
   "test1 test2 test3",
-  "test4",
+  "test4 // test",
   "\t",
   "\ttest5 test6",
   "\t\ttest7",
@@ -23,7 +23,7 @@ String[] TestCode = {
 
 void setup() {
   TIBBTGL2_Interpreter Interpreter = new TIBBTGL2_Interpreter();
-  Interpreter.Compile (TestCode, true);
+  Interpreter.CompilePage (TestCode, true);
 }
 
 

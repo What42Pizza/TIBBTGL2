@@ -22,7 +22,7 @@ class TIBBTGL2_Interpreter {
   public TIBBTGL2_Interpreter() {}
   
   public TIBBTGL2_Interpreter (String[] InputCode) {
-    Code = Compile (InputCode, false);
+    
   }
   
   
@@ -36,7 +36,7 @@ class TIBBTGL2_Interpreter {
   
   // External functions
   
-  public Statement[] Compile (String[] InputCode, boolean PrintDebug) {
+  public Statement[] CompilePage (String[] InputCode, boolean PrintDebug) {
     ArrayList <Statement> Out;
     
     ArrayList <PreStatement> CleanedInputCode = CleanInputCode (InputCode);
@@ -87,8 +87,17 @@ class TIBBTGL2_Interpreter {
         CurrChar = CurrLine.charAt(Level);
       }
       
-      // cut out tabs
-      CurrLine = CurrLine.substring(Level);
+      // find any comment start
+      int SubEnd = CurrLineLength;
+      for (int j = 0; j < CurrLineLength - 1; j ++) {
+        if (CurrLine.charAt(j) == '/' && CurrLine.charAt(j+1) == '/') {
+          SubEnd = j;
+          break;
+        }
+      }
+      
+      // cut out tabs and comments
+      CurrLine = CurrLine.substring(Level, SubEnd);
       
       // add curr line to out
       Out.add (new PreStatement (i, Level, CurrLine));
@@ -109,6 +118,10 @@ class TIBBTGL2_Interpreter {
   
   ArrayList <Statement> Tokenize (ArrayList <PreStatement> CleanedInputCode) {
     ArrayList <Statement> Out = new ArrayList <Statement> ();
+    
+    for (PreStatement CurrStatement : CleanedInputCode) {
+      
+    }
     
     println ("WIP: Interpreter.Tokenize");
     

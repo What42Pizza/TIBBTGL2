@@ -4,7 +4,8 @@
 
 A 1.1.0  (10/03/21)
 Added VarHandler
-~ 450 lines
+Added comment removal to Interpreter.CleanInputCode
+~ 530 lines, +~210
 
 A 1.0.0  (10/02/21)
 Added changelog

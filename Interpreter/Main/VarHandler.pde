@@ -4,18 +4,19 @@ class VarHandler {
   
   
   
-  ArrayList <Variable> InternalVars = new ArrayList <Variable> ();
-  ArrayList <Variable> GlobalVars = new ArrayList <Variable> ();
-  ArrayList <VariableList> VariableStack = new ArrayList <VariableList> ();
-  VariableList CurrVarList = new VariableList();
-  // VariableStack.add(CurrVarList);  // doesn't work here, has to be in constructor
+  ArrayList <Variable> InternalVars;
+  ArrayList <Variable> GlobalVars;
+  ArrayList <VariableList> VariableStack;
+  VariableList CurrVarList;
   
   
   
   
   
   public VarHandler() {
-    VariableStack.add(CurrVarList);
+    InternalVars = new ArrayList <Variable> ();
+    GlobalVars = new ArrayList <Variable> ();
+    Reset();
   }
   
   
@@ -24,6 +25,10 @@ class VarHandler {
   
   
   
+  
+  
+  
+  // external functions
   
   
   
@@ -52,7 +57,51 @@ class VarHandler {
   
   
   
-  public DataValue SearchForVar (ArrayList <Variable> ListOfVars, String VarName) {
+  
+  
+  // entering a code block
+  public void IncreaseLevel() {
+    CurrVarList.IncreaseLevel();
+  }
+  
+  // exitting a code block
+  public void DecreaseLevel() {
+    CurrVarList.DecreaseLevel();
+  }
+  
+  // calling a function
+  public void PushVars() {
+    VariableStack.add(CurrVarList);
+    CurrVarList = new VariableList();
+  }
+  
+  // returning from a function
+  public void PopVars() {
+    CurrVarList = VariableStack.remove(VariableStack.size()-1);
+  }
+  
+  
+  
+  // going to a new page (or first init)
+  public void Reset() {
+    VariableStack = new ArrayList <VariableList> ();
+    CurrVarList = new VariableList();
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  // internal functions
+  
+  
+  
+  DataValue SearchForVar (ArrayList <Variable> ListOfVars, String VarName) {
     
     // search for var
     for (Variable CurrVar : ListOfVars) {
@@ -65,8 +114,6 @@ class VarHandler {
     return Out;
     
   }
-  
-  
   
   
   
@@ -122,6 +169,20 @@ class VariableList {
   
   public void add (Variable VarIn) {
     Vars.add(VarIn);
+  }
+  
+  public void IncreaseLevel() {
+    LevelIndices.add (Vars.size());
+  }
+  
+  public void DecreaseLevel() {
+    int NewLength = LevelIndices.remove(LevelIndices.size()-1);
+    int NumToRemove = Vars.size() - NewLength;
+    int Index = Vars.size() - 1;
+    for (int i = 0; i < NumToRemove; i ++) {
+      Vars.remove(Index);
+      Index --;
+    }
   }
   
 }
