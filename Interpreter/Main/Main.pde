@@ -1,20 +1,15 @@
 // Started 08/23/21
 
-// A 1.1.0  (10/03/21)
+// A 1.1.1  (10/04/21)
 
 
 
 
 
 String[] TestCode = {
-  "test1 test2 test3",
-  "test4 // test",
-  "\t",
-  "\ttest5 \"test6 test7\"",
-  "\t\ttest8",
-  "test9",
-  "\ttest10",
-  ""
+  "// Test code:",
+  "a = {}",
+  "a[1] = \"b\"..\"c\"",
 };
 
 

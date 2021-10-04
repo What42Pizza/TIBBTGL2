@@ -57,6 +57,40 @@ class DataValue {
   
   
   
+  void SetTo (DataValue OtherDV) {
+    Type = OtherDV.Type;
+    switch (Type) {
+      
+      case (DataValueTypes.T_Null):
+        break;
+      
+      case (DataValueTypes.T_Int):
+        IntValue = OtherDV.IntValue;
+        break;
+      
+      case (DataValueTypes.T_Float):
+        FloatValue = OtherDV.FloatValue;
+        break;
+      
+      case (DataValueTypes.T_Bool):
+        BoolValue = OtherDV.BoolValue;
+        break;
+      
+      case (DataValueTypes.T_String):
+        StringValue = OtherDV.StringValue;
+        break;
+      
+      case (DataValueTypes.T_Array):
+        ArrayValue = (ArrayList <DataValue>) OtherDV.ArrayValue.clone();
+        break;
+      
+    }
+  }
+  
+  
+  
+  
+  
 }
 
 
@@ -68,20 +102,18 @@ class DataValue {
 
 
 
-DataValueTypes DataValueTypes = new DataValueTypes();
+//DataValueTypes DataValueTypes = new DataValueTypes();
 
-class DataValueTypes {
+static class DataValueTypes {
   
-  int T_Null = 0;
-  int T_Inf = 1;
-  int T_NegInf = 2;
-  int T_Int = 3;
-  int T_Float = 4;
-  int T_Bool = 5;
-  int T_String = 6;
-  int T_Array = 7;
+  final static int T_Null = 0;
+  final static int T_Int = 1;
+  final static int T_Float = 2;
+  final static int T_Bool = 3;
+  final static int T_String = 4;
+  final static int T_Array = 5;
   
-  String[] Names = {
+  static String[] Names = {
     "Null",
     "Inf",
     "-Inf",
@@ -92,11 +124,11 @@ class DataValueTypes {
     "Array"
   };
   
-  String GetNameFromType (int Type) throws ArrayIndexOutOfBoundsException {
+  static String GetNameFromType (int Type) throws ArrayIndexOutOfBoundsException {
     return Names[Type];
   }
   
-  String GetNameFromDataValue (DataValue DV) {
+  static String GetNameFromDataValue (DataValue DV) {
     return Names[DV.Type];
   }
   

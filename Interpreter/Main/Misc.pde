@@ -29,6 +29,14 @@ static class Misc {
     return Out;
   }
   
+  static String CombineStrings (String Start, String[] In, String Seperator, String End) {
+    return Start + CombineStrings (In, Seperator) + End;
+  }
+  
+  static String CombineStrings (char Start, String[] In, String Seperator, char End) {
+    return Start + CombineStrings (In, Seperator) + End;
+  }
+  
   
   
 }
