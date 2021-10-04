@@ -10,10 +10,10 @@ String[] TestCode = {
   "test1 test2 test3",
   "test4 // test",
   "\t",
-  "\ttest5 test6",
-  "\t\ttest7",
-  "tets8",
-  "\ttest9",
+  "\ttest5 \"test6 test7\"",
+  "\t\ttest8",
+  "test9",
+  "\ttest10",
   ""
 };
 

@@ -6,7 +6,7 @@ class TIBBTGL2_Interpreter {
   
   // Vars
   
-  Statement[] Code;
+  Page[] AllPages;
   
   
   
@@ -21,7 +21,7 @@ class TIBBTGL2_Interpreter {
   
   public TIBBTGL2_Interpreter() {}
   
-  public TIBBTGL2_Interpreter (String[] InputCode) {
+  public TIBBTGL2_Interpreter (File CodeIn) {
     
   }
   
@@ -39,14 +39,30 @@ class TIBBTGL2_Interpreter {
   public Statement[] CompilePage (String[] InputCode, boolean PrintDebug) {
     ArrayList <Statement> Out;
     
+    if (PrintDebug) {
+      println();
+      println ("Input Code:");
+      for (int i = 0; i < InputCode.length; i ++) {
+        println (i + ": " + InputCode[i]);
+      }
+    }
+    
     ArrayList <PreStatement> CleanedInputCode = CleanInputCode (InputCode);
-    if (PrintDebug) for (PreStatement S : CleanedInputCode) {
-      println (S.OrigLineNumber + ": " + S.Level + ", \"" + S.Data + "\"");
+    if (PrintDebug) {
+      println();
+      println ("After Cleaning:");
+      for (PreStatement S : CleanedInputCode) {
+        println (S.OrigLineNumber + ": " + S.Level + ", \"" + S.Data + "\"");
+      }
     }
     
     Out = Tokenize (CleanedInputCode);
-    if (PrintDebug) for (Statement S : Out) {
-      println (S.OrigLineNumber + ": " + S.Level + ",   " + Misc.CombineStrings (S.Tokens, ", "));
+    if (PrintDebug) {
+      println();
+      println ("After Tokenizing:");
+      for (Statement S : Out) {
+        println (S.OrigLineNumber + ": " + S.Level + ",   " + Misc.CombineStrings (S.Tokens, ", "));
+      }
     }
     
     return Misc.ArrayListToArray_Statement (Out);
@@ -118,14 +134,67 @@ class TIBBTGL2_Interpreter {
   
   ArrayList <Statement> Tokenize (ArrayList <PreStatement> CleanedInputCode) {
     ArrayList <Statement> Out = new ArrayList <Statement> ();
-    
     for (PreStatement CurrStatement : CleanedInputCode) {
       
+      String CurrLine = CurrStatement.Data;
+      ArrayList <String> Tokens = new ArrayList <String> ();
+      char[] CurrLineChars = new char [CurrLine.length()];
+      CurrLine.getChars(0, CurrLineChars.length, CurrLineChars, 0);
+      
+      String CurrToken = "";
+      for (int i = 0; i < CurrLineChars.length; i ++) {
+        //println (i);
+        char CurrChar = CurrLineChars[i];
+        CurrToken += CurrChar;
+        
+        // add entire string as token
+        if (CurrChar == '"') {
+          i ++;  CurrChar = CurrLineChars[i];
+          CurrToken += CurrChar;
+          while (i < CurrLineChars.length && CurrChar != '"') {
+            i ++;  CurrChar = CurrLineChars[i];
+            if (CurrChar == '\\') {i ++;  CurrChar = CurrLineChars[i];}
+            CurrToken += CurrChar;
+          }
+          Tokens.add(CurrToken);
+          CurrToken = "";
+          continue;
+        }
+        
+        // add entire name as token
+        if (CharIsNameChar (CurrChar)) {
+          i ++;  CurrChar = CurrLineChars[i];
+          while (i < CurrLineChars.length - 1 && CharIsNameChar (CurrChar)) {
+            CurrToken += CurrChar;
+            i ++;  CurrChar = CurrLineChars[i];
+          }
+          Tokens.add(CurrToken);
+          CurrToken = "";
+          continue;
+        }
+        
+        if (CurrChar != ' ') Tokens.add(CurrToken);
+        
+        CurrToken = "";
+      }
+      
+      int StatementLineNumber = CurrStatement.OrigLineNumber;
+      int StatementLevel = CurrStatement.Level;
+      String[] StatementTokens = Misc.ArrayListToArray_String (Tokens);
+      Out.add(new Statement (StatementLineNumber, StatementLevel, StatementTokens));
+      
     }
-    
-    println ("WIP: Interpreter.Tokenize");
-    
     return Out;
+  }
+  
+  
+  
+  boolean CharIsNameChar (char CharIn) {
+    return (CharIn >= '0' && CharIn <= '9')
+      || (CharIn >= 'A' && CharIn <= 'Z')
+      || (CharIn >= 'a' && CharIn <= 'z')
+      || CharIn == '$'
+      || CharIn == '_';
   }
   
   
@@ -148,11 +217,20 @@ class Statement {
   int OrigLineNumber;
   int Level;
   String[] Tokens;
+  String MainToken;
   
   public Statement (int OrigLineNumber, int Level, String[] Tokens) {
     this.OrigLineNumber = OrigLineNumber;
     this.Level = Level;
     this.Tokens = Tokens;
+    this.MainToken = Tokens[0];
+  }
+  
+  public Statement (int OrigLineNumber, int Level, String[] Tokens, String MainToken) {
+    this.OrigLineNumber = OrigLineNumber;
+    this.Level = Level;
+    this.Tokens = Tokens;
+    this.MainToken = MainToken;
   }
   
 }
@@ -169,6 +247,22 @@ class PreStatement {
     this.OrigLineNumber = OrigLineNumber;
     this.Level = Level;
     this.Data = Data;
+  }
+  
+}
+
+
+
+
+
+class Page {
+  
+  String Name;
+  Statement[] Code;
+  
+  public Page (String Name, Statement[] Code) {
+    this.Name = Name;
+    this.Code = Code;
   }
   
 }

@@ -1,6 +1,6 @@
-# TIBBTGL2
+# TIBBTGL 2
 
-This stands for "Texas-Intruments-Basic Based Text Game Language 2". So, this is a language based on Texas Instrument's version of basic, and it's aimed at making text based games. This language kind of has gotos, but it only lets you switch between files. Each file acts like a page in the game's book, and it's also kinda like a really big function. For a good example of how these gotos are used, see Examples-Programs/CCW (beginning with "Start.txt".
+This stands for "Texas-Intruments-Basic Based Text Game Language 2". So, this is a language based on Texas Instrument's version of basic, and it's aimed at making text based games. This language kind of has gotos, but it only lets you switch between files. Each file acts like a page in the game's book, and it's also kinda like a really big function. For a good example of how these gotos are used, see Examples-Programs/CCW (beginning with "Start.txt").
 
 <br />
 <br />
@@ -21,4 +21,8 @@ Here's all the types of statements you can use:
 - loop *[Value (index var)]*, *[Value (start)]*, *[Value (end)]*, *[Value (increment)]*
 - repeat
 - break
-- goto
+- goto *[Page Name]*
+- return
+- return *[Value]*
+- set *[Var Name]*, *[Value]*   (example: a = 5; b = 10; set a, b; print a (prints 10))
+- PAUSE 
