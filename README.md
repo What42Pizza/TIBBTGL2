@@ -1,10 +1,18 @@
 # TIBBTGL 2
 
-This stands for "Texas-Instruments-Basic Based Text Game Language 2". So, this is a language based on Texas Instrument's version of basic, and it's aimed at making text based games.
-
-This language kind of has gotos, but it only lets you switch between files. Each file acts like a page in your game's book, and it's also kinda like a really big function. That being said, though, each page can have its own functions that are called from outside that page. For a good example of how these gotos are used, see Example-Programs/CCW (beginning with "Start.txt").
+Revision: A 1.1.0 &nbsp; (10/04/21)
 
 <br />
+
+### Basic info:
+
+This stands for "Texas-Instruments-Basic Based Text Game Language 2". So, this is a language based on Texas Instrument's version of basic, and it's aimed at making text based games. I'm mostly making this language because a program that I made on my calculator got erased and I want to remake it (for the third time now) on something where that won't happen and with a language that's similar to TI-Basic. I don't like using spite as a reason to do something, but here I am.
+
+Like TI-Basic, this language does kind of has gotos, but it only lets you switch between files. Each file acts like a page in your game's book, and they'll be referred to as pages from here on. They also act like really big functions, though that being said, each page can have its own functions that are called from other pages. For a good example of how these gotos should be used, see Example-Programs/CCW (beginning with "Start.txt").
+
+<br />
+
+### Basic syntax and data info:
 
 Statement are separated by line breaks, and the level of indentation defines code block starts and ends. For a good example of general syntax, you can look at Internal.txt.
 
@@ -13,11 +21,30 @@ Variables that start with '_' are global, meaning they carry over from page to p
 <br />
 <br />
 <br />
+<br />
+<br />
 
-## Usable statements:
+## Data types:
+
+- Null
+- Integer
+- Float
+- Bool
+- String
+- Array
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## Statements types:
 
 - *[Var Name]* &nbsp; = &nbsp; *[Value]*
 - *[Var Name]* &nbsp; [*[Integer Value (index)]*] &nbsp; [*[Integer Value (index)]*] *...* &nbsp; = &nbsp; *[Value]*
+- *[Var Name]* &nbsp; *[In-place operator]* &nbsp; *[Value]*
+- *[Var Name]* &nbsp; [*[Integer Value (index)]*] &nbsp; [*[Integer Value (index)]*] *...* &nbsp; *[In-place operator]* &nbsp; *[Value]*
 - goto &nbsp; *[Page Name]*
 - do &nbsp; *[Function Name]*
 - do &nbsp; *[Function Name]*, &nbsp; *[Value (arg)]*, &nbsp; *[Value (arg)]*, *...*
@@ -42,6 +69,8 @@ Variables that start with '_' are global, meaning they carry over from page to p
 ### Functions
 
 You can define a function by writing "function " followed by the function name. Functions can have arguments, but they are stored in the internal var $Args. It's a good idea to always move the values from $Args to local variables since they are overwritten every time you can a function. It also gives names to each argument, making it more readable.
+
+Functions aren't being listed under statements since they are internally just labels and the "function" keyword is never interpreted as a statement.
 
 Example function:
 
