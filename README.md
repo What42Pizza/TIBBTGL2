@@ -1,6 +1,6 @@
 # TIBBTGL 2
 
-Revision: A 1.1.0 &nbsp; (10/04/21)
+Revision: A 1.2.0 &nbsp; (10/05/21)
 
 <br />
 
@@ -45,9 +45,9 @@ Variables that start with '_' are global, meaning they carry over from page to p
 - *[Var Name]* &nbsp; [*[Integer Value (index)]*] &nbsp; [*[Integer Value (index)]*] *...* &nbsp; = &nbsp; *[Value]*
 - *[Var Name]* &nbsp; *[In-place operator]* &nbsp; *[Value]*
 - *[Var Name]* &nbsp; [*[Integer Value (index)]*] &nbsp; [*[Integer Value (index)]*] *...* &nbsp; *[In-place operator]* &nbsp; *[Value]*
-- goto &nbsp; *[Page Name]*
-- do &nbsp; *[Function Name]*
-- do &nbsp; *[Function Name]*, &nbsp; *[Value (arg)]*, &nbsp; *[Value (arg)]*, *...*
+- goto &nbsp; *[Value (page name)]*
+- do &nbsp; *[Value (function name)]*
+- do &nbsp; *[Value (function name)]*, &nbsp; *[Value (arg)]*, &nbsp; *[Value (arg)]*, *...*
 - *[Function Name]*
 - *[Function Name]*, &nbsp; *[Value (arg)]*, &nbsp; *[Value (arg)]*, *...*
 - return
@@ -59,7 +59,12 @@ Variables that start with '_' are global, meaning they carry over from page to p
 - loop &nbsp; *[Value (index var)]*, &nbsp; *[Value (start)]*, &nbsp; *[Value (end)]*, &nbsp; *[Value (increment)]*
 - repeat
 - break
+- dupePointer &nbsp; *[Var Name]*, &nbsp; *[Var Name]*
 - set &nbsp; *[Var Name]*, &nbsp; *[Value]*
+- error
+- error &nbsp; *[Value (message)]*
+- try &nbsp; *[Value (function name)]*
+- try &nbsp; *[Value (function name)]*, &nbsp; *[Value (arg)]*, &nbsp; *[Value (arg)]*, *...*
 - PAUSE
 
 <br />

@@ -1,4 +1,6 @@
-A 1.1.0  10/04/21
+A 1.2.0  10/05/21
+Added statements try, error, and dupePointer
 
+A 1.1.0  10/04/21
 Started tracking revisions
 Added in-place operator statements
