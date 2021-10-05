@@ -55,7 +55,7 @@ function AddItem
 	Table = $Args[1]
 	Item = $Args[2]
 	Pos = $Args[3]
-	NewLength = LengthOf Table + 1
+	NewLength = LengthOf (Table + 1)
 	
 	if Pos then
 		loop i, NewLength, Pos + 1, -1
