@@ -1,0 +1,41 @@
+clearScreen
+
+
+
+p "Player " .. _CurrPlayer .. "'s turn!"
+p ""
+p "Options:"
+p "1: Show player data"
+P "2: Shop"
+p "3: Attack"
+p "4: Trade"
+p "5: Give up"
+p "6: End turn"
+p ""
+
+
+
+input "", Choice, 1, 6
+
+
+
+
+
+if Choice == 1 then
+	F.ShowPlayerData
+	goto TurnMenues.Main
+
+if Choice == 2 then
+	goto TurnMenus.Shop.Main
+
+if Choice == 3 then
+	goto TurnMenus.Attack.ChooseOpponent
+
+if Choice == 4 then
+	goto TurnMenus.Trade.ChoosePartner
+
+if Choice == 5 then
+	goto TurnMenus.GiveUp
+
+if Choice == 6 then
+	goto TurnMenus.EndTurn

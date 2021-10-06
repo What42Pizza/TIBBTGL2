@@ -1,0 +1,41 @@
+// see how many players are alive
+
+NumOfAlivePlayers = 0
+LastSeenAlive = 0
+loop i, 1, _NumOfPlayers
+	if _PlayersAlive[i] == true then  // yeah, I know
+		NumOfAlivePlayers = NumOfAlivePlayers + 1  // yeah, I know
+		LastSeenAlive = i
+		break if NumOfAlivePlayers == 2
+
+
+
+if NumOfAlivePlayers == 1 then
+	_WinningPlayer = LastSeenAlive
+	goto Win
+
+
+
+
+
+// go to next player
+
+loop
+	
+	_CurrPlayer = _CurrPlayer + 1
+	
+	if _CurrPlayer > _NumOfPlayers then
+		_CurrPlayer = 1
+	
+	// continues loop if player is dead
+	break IF _PlayersAlive[_CurrPlayer] = true
+
+
+
+
+
+// start player's turn
+
+_Money[_CurrPlayer] = _Money[_CurrPlayer] + _Income[_CurrPlayer]
+
+goto TurnMenus.PasswordCheck

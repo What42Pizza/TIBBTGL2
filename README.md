@@ -115,6 +115,69 @@ function FizzBuzz
 <br />
 <br />
 
+## Evaluator functions:
+
+Basic math:
+
+- [Integer, Float] &nbsp; + &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
+- [Integer, Float] &nbsp; - &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
+- [Integer, Float] &nbsp; * &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
+- [Integer, Float] &nbsp; / &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Float]
+- [Integer, Float] &nbsp; % &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
+- [Integer, Float] &nbsp; ^ &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
+
+More math:
+
+- round &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer]
+- ceil &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer]
+- floor &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer]
+- sqrt &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Float]
+- abs &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
+
+Comparing:
+
+- [Value] &nbsp; == &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
+- [Value] &nbsp; ~= &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
+- [Value] &nbsp; > &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
+- [Value] &nbsp; < &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
+- [Value] &nbsp; >= &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
+- [Value] &nbsp; <= &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
+
+Boolean:
+
+- not &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
+- [Value] &nbsp; and &nbsp; [Value] &nbsp; -> &nbsp; [Value]
+- [Value] &nbsp; or &nbsp; [Value] &nbsp; -> &nbsp; [Value]
+- [Bool] &nbsp; xor &nbsp; [Bool] &nbsp; -> &nbsp; [Bool]
+
+Bitwise:
+
+- NOT &nbsp; [Integer] &nbsp; -> &nbsp; [Integer]
+- [Integer] &nbsp; AND &nbsp; [Integer] &nbsp; -> &nbsp; [Integer]
+- [Integer] &nbsp; OR &nbsp; [Integer] &nbsp; -> &nbsp; [Integer]
+- [Integer] &nbsp; XOR &nbsp; [Integer] &nbsp; -> &nbsp; [Integer]
+
+Extra functions:
+
+- typeOf &nbsp; [Array] &nbsp; -> &nbsp; [String]
+- lengthOf &nbsp; [Array] &nbsp; -> &nbsp; [Integer]
+- isInt &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Bool]
+- toString &nbsp; [Value] &nbsp; -> &nbsp; [String]
+- toNum &nbsp; [Value] &nbsp; -> &nbsp; [Integer, Float]
+- toFraction &nbsp; [Integer, Float] &nbsp; -> &nbsp; [String]
+- toBool &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
 ## Details for each statement type:
 
 <br />
@@ -201,66 +264,3 @@ p $Return
 Returns from the current function and sets $Return to [Value] (if used). Only one return value can be passed since you can return multiple values by putting them into an array.
 
 See above statement for example.
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-
-## Evaluator functions:
-
-Basic math:
-
-- [Integer, Float] &nbsp; + &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
-- [Integer, Float] &nbsp; - &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
-- [Integer, Float] &nbsp; * &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
-- [Integer, Float] &nbsp; / &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Float]
-- [Integer, Float] &nbsp; % &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
-- [Integer, Float] &nbsp; ^ &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
-
-More math:
-
-- round &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer]
-- ceil &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer]
-- floor &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer]
-- sqrt &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Float]
-- abs &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Integer, Float]
-
-Comparing:
-
-- [Value] &nbsp; == &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
-- [Value] &nbsp; ~= &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
-- [Value] &nbsp; > &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
-- [Value] &nbsp; < &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
-- [Value] &nbsp; >= &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
-- [Value] &nbsp; <= &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
-
-Boolean:
-
-- not &nbsp; [Value] &nbsp; -> &nbsp; [Bool]
-- [Value] &nbsp; and &nbsp; [Value] &nbsp; -> &nbsp; [Value]
-- [Value] &nbsp; or &nbsp; [Value] &nbsp; -> &nbsp; [Value]
-- [Bool] &nbsp; xor &nbsp; [Bool] &nbsp; -> &nbsp; [Bool]
-
-Bitwise:
-
-- NOT &nbsp; [Integer] &nbsp; -> &nbsp; [Integer]
-- [Integer] &nbsp; AND &nbsp; [Integer] &nbsp; -> &nbsp; [Integer]
-- [Integer] &nbsp; OR &nbsp; [Integer] &nbsp; -> &nbsp; [Integer]
-- [Integer] &nbsp; XOR &nbsp; [Integer] &nbsp; -> &nbsp; [Integer]
-
-Extra functions:
-
-- typeOf &nbsp; [Array] &nbsp; -> &nbsp; [String]
-- lengthOf &nbsp; [Array] &nbsp; -> &nbsp; [Integer]
-- isInt &nbsp; [Integer, Float] &nbsp; -> &nbsp; [Bool]
-- toString &nbsp; [Value] &nbsp; -> &nbsp; [String]
-- toNum &nbsp; [Value] &nbsp; -> &nbsp; [Integer, Float]
-- toFraction &nbsp; [Integer, Float] &nbsp; -> &nbsp; [String]
-- toBool &nbsp; [Value] &nbsp; -> &nbsp; [Bool]

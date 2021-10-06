@@ -1,0 +1,8 @@
+p "Are you sure you want to end your turn?"
+
+do Ask.YesNo
+
+if Choice == 1 then
+	goto TurnMenus.NextTurn
+if Choice == 2 then
+	goto TurnMenus.Main

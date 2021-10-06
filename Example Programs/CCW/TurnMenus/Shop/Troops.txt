@@ -1,0 +1,45 @@
+MoneyToSpend = 0
+
+loop
+	p ""
+	p "How much do you want to spend on troops?"
+	p "0 = back"
+	
+	input "", MoneyToSpend
+	
+	if MoneyToSpend == 0 then
+		goto TurnMenus.Shop.Main
+	if MoneyToSpend < 0 then
+		p "Please enter a positive number."
+		repeat
+	if MoneyToSpend > _Money[_CurrPlayer] then
+		p "You only have " .. _Money[CurrPlayer] .. "."
+		repeat
+	break
+
+
+
+TroopsToGain = floor ((MoneyToSpend / 10) ^ 1.25)
+
+p ""
+p "This will give you " .. TroopsToGain .. " troops."
+p "1: Confirm"
+p "2: Change amount to spend"
+p "3: Back"
+
+input "", Choice, 1, 3
+
+
+
+if Choice == 1 then
+	_Money [_CurrPlayer] -= AmountToSpend
+	_Troops [_CurrPlayer] += TroopsToGain
+	p "Done."
+	F.WaitForUser
+	goto TurnMenus.Shop
+
+if Choice == 2 then
+	goto TurnMenus.Shop.Troops
+
+if Choice == 3 then
+	goto TurnMenus.Shop

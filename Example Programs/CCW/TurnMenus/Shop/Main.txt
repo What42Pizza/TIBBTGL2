@@ -1,0 +1,38 @@
+clearScreen
+
+
+
+p "Shop:"
+p ""
+p "1: Show player data"
+p "2: Buy troops"
+p "3: Increase income"
+p "4: Increase attack"
+p "5: Increase victory income"
+p "6: Back"
+p ""
+
+input "", Choice, 1, 6
+
+
+
+
+
+if Choice == 1 then
+	F.ShowPlayerData
+	goto TurnMenus.Shop.Main
+
+if Choice == 2 then
+	goto TurnMenues.Shop.Troops
+
+if Choice == 3 then
+	goto TurnMenus.Shop.Income
+
+if Choice == 4 then
+	goto TurnMenus.Shop.Attack
+
+if Choice == 5 then
+	goto TurnMenus.Victory
+
+if Choice == 6 then
+	goto TurnMenus.Main

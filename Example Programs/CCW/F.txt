@@ -9,3 +9,13 @@ function WaitForUser
 
 function AskYesNo
 	input "1 = yes, 2 = no", _Choice, 1, 2
+
+
+
+function ShowPlayerData
+	p "Current player: " .. _CurrPlayer
+	p "Money: " .. _Money [_CurrPlayer]
+	p "Troops: " .. _Troops [_CurrPlayer]
+	p "Income: " .. _Income [_CurrPlayer]
+	p "Attack modifier: " .. _AttackMod [_CurrPlayer]
+	p "Victory modifier: " .. _VictoryMod [_CurrPlayer]

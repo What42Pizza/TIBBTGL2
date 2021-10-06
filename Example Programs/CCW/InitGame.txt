@@ -34,4 +34,4 @@ loop i, 1, _NumOfPlayers
 
 
 _CurrPlayer = 0
-goto NextTurn
+goto TurnMenus.NextTurn

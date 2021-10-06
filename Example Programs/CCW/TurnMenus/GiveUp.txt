@@ -1,0 +1,11 @@
+p "Are you sure you want to give up? This cannot be undone."
+
+do Ask.YesNo
+
+if Choice == 1 then
+	p "Very well, then."
+	_AlivePlayers [_CurrPlayer] = false
+	goto TurnMenus.NextTurn
+
+if Choice == 2 then
+	goto TurnMenus.Main
