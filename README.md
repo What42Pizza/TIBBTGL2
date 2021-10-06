@@ -41,10 +41,30 @@ Variables that start with '_' are global, meaning they carry over from page to p
 
 ## Statements types:
 
+### Variables:
+
 - *[Var Name]* &nbsp; = &nbsp; *[Value]*
-- *[Var Name]* &nbsp; [*[Integer Value (index)]*] &nbsp; [*[Integer Value (index)]*] *...* &nbsp; = &nbsp; *[Value]*
+- *[Var Name]* &nbsp; [*[Integer Value (index)]*] *...* &nbsp; = &nbsp; *[Value]*
 - *[Var Name]* &nbsp; *[In-place operator]* &nbsp; *[Value]*
-- *[Var Name]* &nbsp; [*[Integer Value (index)]*] &nbsp; [*[Integer Value (index)]*] *...* &nbsp; *[In-place operator]* &nbsp; *[Value]*
+- *[Var Name]* &nbsp; [*[Integer Value (index)]*] *...* &nbsp; *[In-place operator]* &nbsp; *[Value]*
+- dupePointer &nbsp; *[Var Name]*, &nbsp; *[Var Name]*
+- dupePointer &nbsp; *[Var Name]* &nbsp; [*[Integer Value (index)]*] *...*, &nbsp; *[Var Name]* &nbsp; [*[Integer Value (index)]*] *...*
+- set &nbsp; *[Var Name]*, &nbsp; *[Value]*
+- set &nbsp; *[Var Name]* &nbsp; [*[Integer Value (index)]*] *...*, &nbsp; *[Value]* &nbsp; [*[Integer Value (index)]*] *...*
+
+### Branches and loops:
+
+- if *[Value]* then
+- loop
+- loop &nbsp; *[Value (index var)]*, &nbsp; *[Value (end)]*
+- loop &nbsp; *[Value (index var)]*, &nbsp; *[Value (start)]*, &nbsp; *[Value (end)]*
+- loop &nbsp; *[Value (index var)]*, &nbsp; *[Value (start)]*, &nbsp; *[Value (end)]*, &nbsp; *[Value (increment)]*
+- repeat
+- continue
+- break
+
+### Execution:
+
 - goto &nbsp; *[Value (page name)]*
 - do &nbsp; *[Value (function name)]*
 - do &nbsp; *[Value (function name)]*, &nbsp; *[Value (arg)]*, &nbsp; *[Value (arg)]*, *...*
@@ -52,19 +72,13 @@ Variables that start with '_' are global, meaning they carry over from page to p
 - *[Function Name]*, &nbsp; *[Value (arg)]*, &nbsp; *[Value (arg)]*, *...*
 - return
 - return &nbsp; *[Value]*
-- if *[Value]* then
-- loop
-- loop &nbsp; *[Value (index var)]*, &nbsp; *[Value (end)]*
-- loop &nbsp; *[Value (index var)]*, &nbsp; *[Value (start)]*, &nbsp; *[Value (end)]*
-- loop &nbsp; *[Value (index var)]*, &nbsp; *[Value (start)]*, &nbsp; *[Value (end)]*, &nbsp; *[Value (increment)]*
-- repeat
-- break
-- dupePointer &nbsp; *[Var Name]*, &nbsp; *[Var Name]*
-- set &nbsp; *[Var Name]*, &nbsp; *[Value]*
-- error
-- error &nbsp; *[Value (message)]*
+
+### Misc. execution:
+
 - try &nbsp; *[Value (function name)]*
 - try &nbsp; *[Value (function name)]*, &nbsp; *[Value (arg)]*, &nbsp; *[Value (arg)]*, *...*
+- error
+- error &nbsp; *[Value (message)]*
 - PAUSE
 
 <br />

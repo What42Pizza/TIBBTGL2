@@ -1,0 +1,174 @@
+function wait
+	Time = $Args[1]
+	
+	$TimeToWait = Time
+	PAUSE
+	$TimeToWait = null
+	
+	return $PauseTime
+
+
+
+function stop
+	$Continue = false
+	PAUSE
+
+
+
+
+
+function print
+	do p
+
+function p
+	ToPrint = $Args[1]
+	AddItem $Log, ToPrint
+
+
+
+function clearScreen
+	$Log = {}
+
+
+
+
+
+function input
+	
+	Message = $Args[1]
+	OutputVar = $Args[2]
+	Min = $Args[3]
+	Max = $Args[4]
+	
+	$RequestUserInput = true
+	loop
+		// take input
+		PAUSE
+		
+		// repeat if out of bounds
+		InputAsNum = toNumber $UserStringInput
+		if Min and (InputAsNum < Min or InputAsNum > Max) then
+			p "Please enter " .. Min .. " though " .. Max .. "."
+			repeat
+		
+		// continue if input is acceptable
+		break
+	$RequestUserInput = false
+	
+	// check if input can be converted to a num
+	Output = toNumber $UserStringInput or $UserStringInput
+	
+	// set given DataValue
+	set OutputVar, Output
+
+
+
+
+function Swap
+	Var1 = $Args[1]
+	Var2 = $Args[2]
+	
+	Temp = Var1
+	set Var1, Var2
+	set Var2, Temp
+
+
+
+
+
+function AddItem
+	Table = $Args[1]
+	Item = $Args[2]
+	Pos = $Args[3]
+	NewLength = (lengthOf Table) + 1
+	
+	if Pos then
+		loop i, NewLength, Pos + 1, -1
+			Table[i] = Table[i-1]
+		Table[Pos] = Item
+		return
+	
+	Table[NewLength] = Item
+
+
+
+function RemoveItem
+	Table = $Args[1]
+	Pos = $Args[2]
+	Length = lengthOf Table
+	
+	if Pos then
+		loop i, Pos, Length - 1
+			Table[i] = Table[i+1]
+		Table[Length] = null
+		return
+	
+	Table[Length] = null
+
+
+
+function FillTable
+	Table = $Args[1]
+	Item = $Args[2]
+	Length = $Args[3]
+	
+	// enure good args
+	if typeOf Table ~= "array" and typeOf Length ~= "number" then
+		error "Cannot set a non-array input to a non-number length"
+	
+	// prep
+	Length = Length or lengthOf Table
+	set Table, {}
+	
+	// fill table
+	loop i, 1, Length
+		Table[i] = Item
+	
+	// done
+	return
+
+
+
+
+
+
+
+
+
+
+// set and dupePointer explanation:
+// 
+// 
+// a = 5
+// b = a
+// b = 10
+// print a  // prints 5 since 'b = 10' overwrote b to 10
+// 
+// 
+// set b, a
+// b = 15
+// print a  // still prints 5. 'set b, a' set the value that b points to to 5, then b was ovwerwritten with 15
+// 
+// 
+// dupePointer b, a
+// b = 20
+// print a  // STILL prints 5. dupePointer set b's pointer to the same as a's pointer, then b was ovwerwritten again
+// 
+// 
+// dupePointer b, a
+// set b, 25
+// print a  // now it prints 25. dupePointer set b's pointer to the same as a's pointer, then the value that b points to (which is the same value that a points to) was set to 25
+
+
+
+// another example:
+// 
+// a = 5
+// 
+// function SetTo10
+// 	set Input, $Args[1]
+// 	Input = $Args[1]
+// 	set a, 10
+// 
+// SetTo10 a
+// print a  // prints 10. $Args[1] holds the same pointer that a holds

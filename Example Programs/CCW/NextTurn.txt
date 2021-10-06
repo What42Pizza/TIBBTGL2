@@ -28,7 +28,7 @@ loop
 		_CurrPlayer = 1
 	
 	// continues loop if player is dead
-	break if _PlayersAlive[_CurrPlayer] = true
+	break IF _PlayersAlive[_CurrPlayer] = true
 
 
 
